@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 
-[RouteAttribute("api/auto/quotes")]
+
 
 public class AutoController : Controller
 
 {
+    [RouteAttribute("api/auto/quotes")]
 // POST api/auto/quotes
 
     [HttpPost]
