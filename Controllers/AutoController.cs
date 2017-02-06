@@ -1,17 +1,18 @@
 using Microsoft.AspNetCore.Mvc;
 
 
-
+[RouteAttribute("api/auto/quotes")]
 public class AutoController : Controller
 
 {
-    [RouteAttribute("api/auto/quotes")]
+    
 // POST api/auto/quotes
 
     [HttpPost]
     public IActionResult Post([FromBodyAttribute]string value)
     {
-        return Created("", value);
+        //return Created("", value);
+        return Created("",0);
     }
 
 // GET api/auto/quotes/5
