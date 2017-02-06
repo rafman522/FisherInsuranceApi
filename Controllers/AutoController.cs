@@ -11,8 +11,8 @@ public class AutoController : Controller
     [HttpPost]
     public IActionResult Post([FromBodyAttribute]string value)
     {
-        //return Created("", value);
-        return Created("",0);
+        return Created("", value);
+        
     }
 
 // GET api/auto/quotes/5
