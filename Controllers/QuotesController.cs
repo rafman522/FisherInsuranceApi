@@ -2,13 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using FisherInsuranceApi.Data;
 using FisherInsuranceApi.Models;
 
-[RouteAttribute("api/auto/quotes")]
-public class AutoController : Controller
+[RouteAttribute("api/quotes")]
+public class QuotesController : Controller
 
 {
     private IMemoryStore db;
 
-    public AutoController(IMemoryStore repo)
+    public QuotesController(IMemoryStore repo)
     {
         db=repo;
     }
