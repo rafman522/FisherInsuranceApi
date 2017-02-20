@@ -34,9 +34,6 @@ public class AutoController : Controller
         return Ok(db.CreateQuote(quote));
     }
 
-    [HttpPost]
-    
-
 
 // PUT api/auto/quotes/id
     [HttpPut("{id}")]
