@@ -1,38 +1,54 @@
 using Microsoft.AspNetCore.Mvc;
+using FisherInsuranceApi.Models;
+using FisherInsuranceApi.Data;
 
 [RouteAttribute("api/claims")]
 
 public class ClaimsController : Controller
 
 {
-// POST api/auto/quotes
 
-    [HttpPost]
-    public IActionResult Post([FromBodyAttribute]string value)
+    private IMemoryStore db;
+
+    public ClaimsController(IMemoryStore repo)
     {
-        return Created("", value);
+        db=repo;
     }
 
-// GET api/auto/quotes/5
+    [HttpGet]
+    public IActionResult GetClaims()
+    {
+        return Ok(db.RetrieveAllClaims);
+    }
+
+
     [HttpGetAttribute("{id}")]
     public IActionResult Get(int id)
     {
-        return Ok("The id is: " + id);
+        return Ok(db.RetrieveClaim(id));
     }
+
+    [HttpPost]
+    public IActionResult Post([FromBody]Claim claim)
+    {
+        return Ok(db.CreateClaim(claim));
+    }
+
 
 // PUT api/auto/quotes/id
     [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBodyAttribute]string value)
+    public IActionResult Put([FromBodyAttribute]Claim claim)
     {
-        return NoContent();
+        return Ok(db.UpdateClaim(claim));
     }
 
 // DELETE api/auto/quotes/id
 
     [HttpDeleteAttribute("{id}")]
-    public IActionResult Delete(int id)
+    public IActionResult Delete([FromBodyAttribute]Claim claim)
     {
-        return Delete(id);
+        db.DeleteClaim(claim.Id);
+        return Ok();
     }
 
 }
