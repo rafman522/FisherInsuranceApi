@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-[RouteAttribute("api/claim/claims")]
+[RouteAttribute("api/claims")]
 
 public class ClaimsController : Controller
 
