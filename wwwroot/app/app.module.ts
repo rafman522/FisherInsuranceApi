@@ -37,4 +37,6 @@ import { NavBarComponent } from './components/navbar/navbar.component';
             AppComponent     
         ], 
     }) 
-    export class AppModule { }
+    export class AppModule { 
+        
+    }
