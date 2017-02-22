@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 
 // import our application component
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({ 
 
