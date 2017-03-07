@@ -34,7 +34,7 @@ public class QuotesController : Controller
         var newQuote = db.Quotes.Add(quote);
         db.SaveChanges();
 
-        return CreatedAtRoute("GetQuote", new {id=quote.id}, quote);
+        return CreatedAtRoute("GetQuote", new {id=quote.Id}, quote);
     }
 
 
