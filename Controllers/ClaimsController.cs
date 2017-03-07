@@ -8,7 +8,7 @@ public class ClaimsController : Controller
 
 {
 
-    private readonly FisherContext db
+    private readonly FisherContext db;
 
     public ClaimsController(FisherContext context)
     {
@@ -18,7 +18,7 @@ public class ClaimsController : Controller
     [HttpGet]
     public IActionResult GetClaims()
     {
-        return Ok(db.Claims;
+        return Ok(db.Claims);
     }
 
 
