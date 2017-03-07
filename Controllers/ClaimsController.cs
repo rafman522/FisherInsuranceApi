@@ -8,47 +8,66 @@ public class ClaimsController : Controller
 
 {
 
-    private IMemoryStore db;
+    private readonly FisherContext db
 
-    public ClaimsController(IMemoryStore repo)
+    public ClaimsController(FisherContext context)
     {
-        db=repo;
+        db=context;
     }
 
     [HttpGet]
     public IActionResult GetClaims()
     {
-        return Ok(db.RetrieveAllClaims);
+        return Ok(db.Claims;
     }
 
 
     [HttpGetAttribute("{id}")]
     public IActionResult Get(int id)
     {
-        return Ok(db.RetrieveClaim(id));
+        return Ok(db.Claims.Find(id));
     }
 
     [HttpPost]
     public IActionResult Post([FromBody]Claim claim)
     {
-        return Ok(db.CreateClaim(claim));
+        var newClaim = db.Claims.Add(claim);
+        db.SaveChanges();
+
+        return CreatedAtRoute("GetClaim", new {id=claim.Id}, claim);
     }
 
+    
 
-// PUT api/auto/quotes/id
+    // PUT api/auto/quotes/id
     [HttpPut("{id}")]
-    public IActionResult Put([FromBodyAttribute]Claim claim)
+    public IActionResult Put(int id, [FromBodyAttribute]Claim claim)
     {
-        return Ok(db.UpdateClaim(claim));
+        var newClaim = db.Claims.Find(id);
+
+        if (newClaim == null)
+        {
+            return NotFound();
+        }
+        newClaim = claim;
+        db.SaveChanges();
+        return Ok(newClaim);
     }
 
 // DELETE api/auto/quotes/id
 
     [HttpDeleteAttribute("{id}")]
-    public IActionResult Delete([FromBodyAttribute]Claim claim)
+    public IActionResult Delete(int id)
     {
-        db.DeleteClaim(claim.Id);
-        return Ok();
+        var claimToDelete = db.Claims.Find(id);
+        if (claimToDelete == null)
+        {
+            return NotFound();
+        }
+        db.Claims.Remove(claimToDelete);
+        db.SaveChangesAsync();
+
+        return NoContent();
     }
 
 }
