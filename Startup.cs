@@ -31,6 +31,14 @@ namespace FisherInsuranceApi
             services.AddDbContext<FisherContext>();
             // Add framework services.
             services.AddMvc();
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequireNonAlphanumeric = false;
+                config.Cookies.ApplicationCookie.AutomaticChallenge = false;
+            })
+            .AddEntityFrameworkStores<FisherContext>()
+            .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
