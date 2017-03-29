@@ -11,7 +11,7 @@ export class LoginComponent {
     title = "Login";
     loginForm = null;
 
-    constructor(private fb: FormsBuilder, private router: Router) {
+    constructor(private fb: FormBuilder, private router: Router) {
 
         this.loginForm = fb.group({
             username: ["", Validators.required],
