@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using FisherInsuranceApi.Data;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using FisherInsuranceApi.Security;
+using Microsoft.IdentityModel.Tokens;
 
 namespace FisherInsuranceApi
 {
@@ -50,6 +52,23 @@ namespace FisherInsuranceApi
            
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            
+            app.UseJwtProvider();
+            app.UseJwtBearerAuthentication(new JwtBearerOptions()
+            {
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true,
+                RequireHttpsMetadata = false,
+                TokenValidationParameters = new TokenValidationParameters()
+                {
+                    IssuerSigningKey = JwtProvider.SecurityKey,
+                    ValidIssuer = JwtProvider.Issuer,
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+
+                }
+            });
             app.UseMvc();
         }
     }
