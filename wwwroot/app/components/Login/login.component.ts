@@ -20,7 +20,7 @@ export class LoginComponent {
 
     }
 
-    perforLogin(e) {
+    performLogin(e) {
         e.preventDefault();
         alert(JSON.stringify(this.loginForm.value));
         
