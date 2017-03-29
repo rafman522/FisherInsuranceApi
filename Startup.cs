@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using FisherInsuranceApi.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace FisherInsuranceApi
 {

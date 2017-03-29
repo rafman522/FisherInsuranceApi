@@ -8,9 +8,10 @@ using FisherInsuranceApi.Data;
 namespace FisherInsuranceApi.Migrations
 {
     [DbContext(typeof(FisherContext))]
-    partial class FisherContextModelSnapshot : ModelSnapshot
+    [Migration("20170329050953_identity")]
+    partial class identity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
