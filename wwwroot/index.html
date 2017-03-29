@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <base href="/">
   <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
   <script src="//unpkg.com/core-js/client/shim.min.js"></script>
@@ -18,8 +19,10 @@
         '@angular/compiler'                : 'https://unpkg.com/@angular/compiler@2.0.0',
         '@angular/platform-browser'        : 'https://unpkg.com/@angular/platform-browser@2.0.0',
         '@angular/platform-browser-dynamic': 'https://unpkg.com/@angular/platform-browser-dynamic@2.0.0',
-        '@angular/http': 'https://unpkg.com/@angular/http@2.0.0'
-      },
+        '@angular/http': 'https://unpkg.com/@angular/http@2.0.0',
+        '@angular/forms': 'https://unpkg.com/@angular/forms@2.0.0',
+        '@angular/router': 'https://unpkg.com/@angular/router@3.0.0'
+    },
       packages: {
         'app': {main: 'main', defaultExtension: 'ts'},
         '@angular/core'                    : {main: 'index.js'},
@@ -27,7 +30,9 @@
         '@angular/compiler'                : {main: 'index.js'},
         '@angular/platform-browser'        : {main: 'index.js'},
         '@angular/platform-browser-dynamic': {main: 'index.js'}, 
-        '@angular/http': {main: 'index.js'}
+        '@angular/http': {main: 'index.js'},
+        '@angular/forms': {main: 'index.js'},
+        '@angular/router': {main: 'index.js'}
       }
     });
     System.import('./app/main.ts');
