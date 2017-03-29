@@ -1,4 +1,6 @@
-import { Component } from '@angular/core'
+import { Component } from '@angular/core';
+import { AuthService } from '../../auth.service';
+import { Router } from '@angular/router';
 
 
 
@@ -14,4 +16,21 @@ import { Component } from '@angular/core'
 
 export class NavBarComponent {
     
+    constructor(public router: Router, public authService: AuthService){ }
+
+    isActive(data: any[]): boolean {
+        return this.router.isActive(
+            this.router.createUrlTree(data),
+        true);
+
+        
+    }
+
+    logout(): boolean {
+        //logs out the user, then redirects him to welcome view
+        if (this.authService.logout()) {
+            this.router.navigate([""]);
+        }
+        return false;
+    }
 }

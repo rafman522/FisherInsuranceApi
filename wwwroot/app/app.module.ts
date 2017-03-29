@@ -12,7 +12,8 @@ import { NavBarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { ClaimsComponent } from './components/claims/claims.component';
 import { QuotesComponent } from './components/quotes/quotes.component';
-
+import { AuthService } from "./auth.service";
+import { AuthHttp } from "./auth.http";
 import { AppRouting } from './app.routing';
 
 @NgModule({ 
@@ -43,7 +44,8 @@ import { AppRouting } from './app.routing';
         ],     
 
         providers: [
-
+            AuthService,
+            AuthHttp
         ],     
 
         bootstrap: [ 
